@@ -1,0 +1,5 @@
+class Day{day}Year{year} {
+  static func partOne(lines: [String]) -> Int { 0 }
+  
+  static func partTwo(lines: [String]) -> Int { 0 }
+}
