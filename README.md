@@ -1,4 +1,4 @@
-# Advent of Swift | ![Build](https://github.com/ianvkoeppe/AdventOfSwift/actions/workflows/build.yml/badge.svg)
+# Advent of Swift
 
 Solutions for [adventofcode.com](https://adventofcode.com) in Swift.
 
