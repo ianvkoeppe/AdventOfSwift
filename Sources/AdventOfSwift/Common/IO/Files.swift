@@ -1,8 +1,8 @@
 import Foundation
 
 class Files {
-  static func readExample(year: Int, day: Int) -> [String] {
-    Files.read(year: year, day: day, filename: "example")
+  static func readExample(year: Int, day: Int, filename: String = "example") -> [String] {
+    Files.read(year: year, day: day, filename: filename)
   }
   
   static func readProblem(year: Int, day: Int) -> [String] {
