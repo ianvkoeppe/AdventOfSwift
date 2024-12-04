@@ -5,8 +5,7 @@ class Day3Year2024 {
   
   static func partTwo(lines: [String]) -> Int {
     return ("do()" + lines.joined()).split(separator: "don't()")
-      .map { findMuls(in: String($0).substringAfter("do()", or: "")) }
-      .sum()
+      .sum { findMuls(in: String($0).substring(after: "do()", or: "")) }
   }
   
   private static func findMuls(in str: String) -> Int {
