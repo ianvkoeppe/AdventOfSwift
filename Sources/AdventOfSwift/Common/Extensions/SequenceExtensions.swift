@@ -1,4 +1,4 @@
-extension Sequence where Element: Hashable {
+extension Sequence {
   func compactJoined(_ by: (Element) -> String?, separator: String = "") -> String {
     self.compactMap(by).joined(separator: separator)
   }
@@ -7,7 +7,7 @@ extension Sequence where Element: Hashable {
     self.compactMap { $0 }
   }
   
-  func grouping() -> [Element:[Element]] {
+  func grouping() -> [Element:[Element]] where Element: Hashable {
     self.grouping { $0 }
   }
   

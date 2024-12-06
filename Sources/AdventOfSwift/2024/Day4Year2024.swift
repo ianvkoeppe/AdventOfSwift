@@ -3,7 +3,7 @@ class Day4Year2024 {
   private static let slants = [[(-1, -1), (1, 1)], [(1, -1), (-1, 1)]]
   
   static func partOne(lines: [String]) -> Int {
-    let grid = lines.map { Array($0) }
+    let grid = lines.map(Array.init)
     return grid.sum { x, y in
       adjacent.count { (adjX, adjY) in
         let letters = (0...3).compactMap { distance in grid[safe: y + distance * adjY]?[safe: x + distance * adjX] }.joined(String.init)
@@ -13,7 +13,7 @@ class Day4Year2024 {
   }
   
   static func partTwo(lines: [String]) -> Int {
-    let grid = lines.map { Array($0) }
+    let grid = lines.map(Array.init)
     return grid.sum { x, y in
       grid[y][x] == "A" && slants.allSatisfy { adjustments in
         let letters = adjustments.compactMap { adjX, adjY in grid[safe: y + adjY]?[safe: x + adjX] }.sorted().joined(String.init)

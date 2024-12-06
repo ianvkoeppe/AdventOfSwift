@@ -2,6 +2,17 @@ extension Array {
   subscript(safe index: Index) -> Element? {
     indices.contains(index) ? self[index] : nil
   }
+  
+  subscript<E>(safe p: Point) -> E? where Element == Array<E> {
+    self[safe: p.y]?[safe: p.x]
+  }
+
+  func firstIndices<E>(of: (Self.Index, Element.Index) -> Bool) -> (Element.Index, Element.Index)? where Element == Array<E> {
+    return self.indices.compactMap { y in
+      let x = self[y].indices.first { x in of(x, y) }
+      return x != nil ? (x!, y) : nil
+    }.first
+  }
 
   func sum<E>(of: (Self.Index, Element.Index) -> Int) -> Int where Element == Array<E> {
     self.indices.sum { y in self[y].indices.sum { x in of(x, y) } }
