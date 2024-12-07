@@ -26,7 +26,7 @@ class Day2Year2024 {
       case 1:
         // If a single bad value, it must either be on the edge or mergeable with an adjacent level without violating safety requirement.
         return [differences[safe: unsafeLevels.first!.offset - 1], differences[safe: unsafeLevels.first!.offset + 1]]
-        .satisfiesAny { $0 == nil || valid.contains($0! + unsafeLevels.first!.element) }
+          .anySatisfies { $0 == nil || valid.contains($0! + unsafeLevels.first!.element) }
       default:
         // Otherwise, we can only meet safety requirement if all levels are already safe.
         return differences.allSatisfy { valid.contains($0) }
