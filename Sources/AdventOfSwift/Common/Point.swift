@@ -1,4 +1,6 @@
 public struct Point: Hashable {
+  private static let orthogonal = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+  
   let x: Int, y: Int
   
   func up() -> Point {
@@ -15,6 +17,10 @@ public struct Point: Hashable {
   
   func left() -> Point {
     Point(x: x - 1, y: y)
+  }
+  
+  func orthogonalNeighbors() -> [Point] {
+    Point.orthogonal.map { Point(x: $0.0 + x, y: $0.1 + y) }
   }
   
   func advance(in direction: Direction) -> Point {

@@ -8,10 +8,16 @@ extension Array {
   }
 
   func firstIndices<E>(of: (Self.Index, Element.Index) -> Bool) -> (Element.Index, Element.Index)? where Element == Array<E> {
-    return self.indices.compactMap { y in
+    self.indices.compactMap { y in
       let x = self[y].indices.first { x in of(x, y) }
       return x != nil ? (x!, y) : nil
     }.first
+  }
+  
+  func indices<E>(of: (Self.Index, Element.Index) -> Bool) -> [(Element.Index, Element.Index)] where Element == Array<E> {
+    self.indices.flatMap { y in
+      self[y].indices.filter { x in of(x, y) }.map { x in (x, y) }
+    }
   }
 
   func sum<E>(of: (Self.Index, Element.Index) -> Int) -> Int where Element == Array<E> {

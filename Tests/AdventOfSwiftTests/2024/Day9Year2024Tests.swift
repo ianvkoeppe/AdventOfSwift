@@ -7,7 +7,6 @@ class Day9Year2024Tests {
   }
   
   @Test func partOne() async {
-    // High: 8183694578038
     #expect(Day9Year2024.partOne(lines: Files.readProblem(year: 2024, day: 9)) == 6242766523059)
   }
   
