@@ -1,7 +1,9 @@
-public struct Point: Hashable {
+public struct Point: CustomStringConvertible, Hashable {
   private static let orthogonal = [(0, 1), (1, 0), (0, -1), (-1, 0)]
   
   let x: Int, y: Int
+  
+  public var description: String { return "(\(x), \(y))" }
   
   func up() -> Point {
     Point(x: x, y: y - 1)
@@ -21,6 +23,13 @@ public struct Point: Hashable {
   
   func orthogonalNeighbors() -> [Point] {
     Point.orthogonal.map { Point(x: $0.0 + x, y: $0.1 + y) }
+  }
+  
+  func orthogonalPositions() -> [Position] {
+    [Position(point: up(), direction: .north),
+     Position(point: right(), direction: .east),
+     Position(point: down(), direction: .south),
+     Position(point: left(), direction: .west)]
   }
   
   func advance(in direction: Direction) -> Point {

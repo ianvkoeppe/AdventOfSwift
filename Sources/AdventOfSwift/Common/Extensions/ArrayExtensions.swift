@@ -1,8 +1,12 @@
 extension Array {
   subscript(safe index: Index) -> Element? {
-    indices.contains(index) ? self[index] : nil
+    return indices.contains(index) ? self[index] : nil
   }
   
+  subscript<E>(_ p: Point) -> E where Element == Array<E> {
+    self[p.y][p.x]
+  }
+
   subscript<E>(safe p: Point) -> E? where Element == Array<E> {
     self[safe: p.y]?[safe: p.x]
   }

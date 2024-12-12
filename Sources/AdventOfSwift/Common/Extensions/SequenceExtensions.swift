@@ -15,6 +15,12 @@ extension Sequence {
     Dictionary(grouping: self, by: keyForValue)
   }
   
+  func chunk(by: (Element) -> Set<Element>) -> [Set<Element>] where Element: Hashable {
+    reduce([Set<Element>]()) { (groups, next) in
+      groups.anySatisfies { $0.contains(next) } ? groups : groups + [by(next)]
+    }
+  }
+  
   func joined(_ by: (Element) -> String, separator: String = "") -> String {
     self.map(by).joined(separator: separator)
   }
