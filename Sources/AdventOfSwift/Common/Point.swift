@@ -1,4 +1,5 @@
-public struct Point: CustomStringConvertible, Hashable {
+public struct Point: CustomStringConvertible, Hashable, Sendable {
+  private static let adjacencies = [(1, 0), (0, 1), (-1, 0), (0, -1), (1, -1), (-1, 1), (-1, -1), (1, 1)]
   private static let orthogonal = [(0, 1), (1, 0), (0, -1), (-1, 0)]
   
   let x: Int, y: Int
@@ -21,6 +22,10 @@ public struct Point: CustomStringConvertible, Hashable {
     Point(x: x - 1, y: y)
   }
   
+  func neighbors() -> [Point] {
+    Point.adjacencies.map { Point(x: $0.0 + x, y: $0.1 + y) }
+  }
+
   func orthogonalNeighbors() -> [Point] {
     Point.orthogonal.map { Point(x: $0.0 + x, y: $0.1 + y) }
   }
