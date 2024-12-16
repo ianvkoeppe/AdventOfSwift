@@ -6,6 +6,10 @@ enum Direction: CaseIterable {
   }
   
   func right() -> Direction {
-    Direction.allCases[(Direction.allCases.firstIndex(of: self)! + 1) % Direction.allCases.count]
+    Direction.allCases[(Direction.allCases.firstIndex(of: self)! + 1) %% Direction.allCases.count]
+  }
+  
+  func left() -> Direction {
+    Direction.allCases[(Direction.allCases.firstIndex(of: self)! - 1) %% Direction.allCases.count]
   }
 }
