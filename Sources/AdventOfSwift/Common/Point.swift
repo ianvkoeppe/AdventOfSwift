@@ -22,8 +22,12 @@ public struct Point: CustomStringConvertible, Hashable, Sendable {
     Point(x: x - 1, y: y)
   }
   
-  func neighbors() -> [Point] {
-    Point.adjacencies.map { Point(x: $0.0 + x, y: $0.1 + y) }
+  func manhanttanDistance(to other: Point) -> Int {
+    abs(other.x - x) + abs(other.y - y)
+  }
+  
+  func neighbors(by factor: Int = 1) -> [Point] {
+    Point.adjacencies.map { Point(x: $0.0 + (x * factor), y: $0.1 + (y * factor)) }
   }
 
   func orthogonalNeighbors() -> [Point] {
