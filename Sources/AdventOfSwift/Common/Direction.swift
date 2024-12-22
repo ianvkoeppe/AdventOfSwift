@@ -1,4 +1,6 @@
 enum Direction: CaseIterable {
+  public static let characters: [Character:Direction] = [">": .east, "v": .south, "<": .west, "^": .north]
+  
   case north, east, south, west
   
   func axis() -> Axis {
