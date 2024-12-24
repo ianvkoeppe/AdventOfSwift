@@ -1,5 +1,3 @@
-import Algorithms
-
 class Day21Year2024 {
   private class KeyPad {
     private static let priorities: [Character] = ["<", "^", "v", ">"]
